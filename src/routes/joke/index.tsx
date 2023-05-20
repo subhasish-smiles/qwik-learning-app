@@ -38,22 +38,22 @@ export default component$(() => {
   const jokeRef2 = useSignal<Element>();
   const favoriteJokeAction = useJokeAction();
 
-  const animateColor = $((event) => {
+  const animateColor = $((event: any) => {
     console.log('ello', event.target.checked);
     if (event.target.checked) {
-      animate(jokeRef.value, { backgroundColor: 'red' });
+      animate(jokeRef.value as Element, { backgroundColor: 'red' });
     } else {
-      animate(jokeRef.value, { backgroundColor: 'blue' });
+      animate(jokeRef.value as Element, { backgroundColor: 'blue' });
     }
     checked.value = !checked.value;
   });
 
-  const animateColor2 = $((event) => {
+  const animateColor2 = $((event: any) => {
     console.log('ello2', event.target.checked);
     if (event.target.checked) {
-      animate(jokeRef2.value, { x: '100vw', rotate: 45 });
+      animate(jokeRef2.value as Element, { x: '100vw', rotate: 45 });
     } else {
-      animate(jokeRef2.value, { x: 0, rotate: 0 }, { duration: 0.5 });
+      animate(jokeRef2.value as Element, { x: 0, rotate: 0 }, { duration: 0.5 });
     }
     checked2.value = !checked2.value;
   });
@@ -75,7 +75,7 @@ export default component$(() => {
           <input
             type="checkbox"
             class="toggle toggle-primary"
-            checked={checked}
+            checked={checked.value}
             onChange$={animateColor}
           />
         </label>
@@ -86,7 +86,7 @@ export default component$(() => {
           <input
             type="checkbox"
             class="toggle toggle-primary"
-            checked={checked2}
+            checked={checked2.value}
             onChange$={animateColor2}
           />
         </label>
